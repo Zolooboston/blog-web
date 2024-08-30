@@ -31,3 +31,38 @@ body {
     text-wrap: balance;
   }
 } */
+.technology {
+  color: #fff;
+  font-family: "Work Sans";
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 20px;
+}
+.carousel-text {
+  color: #181a2a;
+  /* Heading/h1/Semibold */
+  font-family: "Work Sans";
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 40px;
+}
+.date {
+  color: #97989f;
+  font-family: "Work Sans";
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 24px;
+}
+.trending {
+  color: #181a2a;
+
+  /* Heading/h3/Bold */
+  font-family: "Work Sans";
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 28px;
+}
