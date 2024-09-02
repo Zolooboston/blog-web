@@ -34,9 +34,9 @@ const TrendingCardData = [
 
 export const TrendingCard = () => {
   return (
-    <div className=" max-w-7xl m-auto flex justify-between gap-[20px] pt-[30px]">
+    <div className=" w-full flex justify-between gap-[20px] pt-[30px]">
       {TrendingCardData.map((card) => (
-        <div className="relative flex justify-start items-end ">
+        <div className="relative flex items-end ">
           <div>
             <img
               className="h-[320px] object-cover w-[289px] rounded-[12px]"
@@ -44,11 +44,13 @@ export const TrendingCard = () => {
               alt=""
             />
           </div>
-          <div className="flex justify-center items-center px-[10px] py-1 w-[77px] h-[20px] rounded-md bg-[#4B6BFB] technology ">
-            Technology
-          </div>
-          <div className="absolute text-white text-[18px] font-[600] text-center">
-            {card.description}
+          <div className="flex flex-col absolute left-[28.5px] bottom-7 gap-4">
+            <div className=" justify-start px-[10px] py-1 w-[77px] h-[20px] rounded-md bg-[#4B6BFB] technology ">
+              Technology
+            </div>
+            <div className="flex flex-col text-white text-[18px] font-[600] items-start">
+              {card.description}
+            </div>
           </div>
         </div>
       ))}

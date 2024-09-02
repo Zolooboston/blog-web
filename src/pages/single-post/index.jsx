@@ -1,4 +1,4 @@
-import SinglePostPage from "@/components/pages/SinglePost";
+import SinglePostPage from "@/components/page/SinglePost";
 
 export default function SinglePost() {
   return (
