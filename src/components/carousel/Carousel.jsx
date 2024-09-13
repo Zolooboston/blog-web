@@ -1,41 +1,112 @@
-export default function Carousel() {
+// //
+// import { useEffect, useState } from "react";
+// import { LeftArrow } from "../svg/LeftArrow";
+// import { RightArrow } from "../svg/RightArrow";
+// import { DateGenerate } from "../blog-post/DateGenerate";
+// import Link from "next/link";
+
+import { Main } from "next/document";
+import { useEffect, useState } from "react";
+
+// const Carousel = ({
+//   prevSlide,
+//   nextSlide,
+//   backurl,
+//   url,
+//   tag,
+//   description,
+//   time,
+// }) => {
+//   const toUpperCase = (name) => {
+//     const names = name?.split(``);
+//     if (names) {
+//       return names[0].toUpperCase() + names.slice(1).join(``);
+//     }
+//   };
+
+//   return (
+//     <div className="w-full flex justify-center ">
+//       <div className=" container mt-[100px] flex  flex-col gap-[10px] px-8 max-w-7xl ">
+//         <Link
+//           href={`/blog-list/${backurl}`}
+//           className="h-[600px] flex justify-start items-end pl-[5px] pb-[5px] transition-all ease-linear duration-300"
+//           style={{
+//             backgroundImage: `url(${url})`,
+//             backgroundSize: "cover",
+//             backgroundPosition: "center",
+//           }}
+//         >
+//           <div className=" w-[50%] flex flex-col   border-[1px] border-[var(--bordercolor)] rounded-[12px]  bg-[var(--textwhite)] p-[40px]">
+//             <div>
+//               <button className="px-[10px] py-[4px] rounded-[6px] border-[1px] border-[var(--bordercolor)] text-[14px] leading-[20px] font-[500] text-[var(--textwhite)] bg-[var(--bgblue)]">
+//                 {toUpperCase(tag)}
+//               </button>
+//             </div>
+//             <div className="flex flex-col gap-[8px] mt-[16px]">
+//               <span className="text-[14px] md:text-[36px] leading-[40px] font-[600]">
+//                 {description}
+//               </span>
+//             </div>
+//             <span className="mt-[24px] text-[16px] leading-[24px] font-[400] text-[gray]">
+//               <DateGenerate time={time} />
+//             </span>
+//           </div>
+//         </Link>
+
+//         <div className="flex justify-end gap-[8px] ">
+//           <button onClick={prevSlide}>
+//             <LeftArrow />
+//           </button>
+//           <button onClick={nextSlide}>
+//             <RightArrow />
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+// export default Carousel;
+
+export const Carousel = () => {
+  const [article, setArticle] = useState([]);
+
+  const fetchData = () => {
+    fetch("https://dev.to/api/articles?per_page=4&top=5")
+      .then((response) => response.json())
+      .then((data) => setArticle(data));
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [article]);
   return (
-    <div className="w-full">
-      <div
-        className='flex flex-col justify-end  h-[800px] bg-[url("https://s3-alpha-sig.figma.com/img/eb4f/aad2/4394e91108e011b0d07581596959713b?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=oOv1Sv0nZsc-7aG08OA0bM-c5I4UQcBj76wy1pKi0Bn21U-UsfiuD35-r5tZrTah4Ew8JEif8pV3i-KtHOZ~U-ag587jL4qM3y4YdvO8UP79kNEUuCRBTzzYDXUrmdXciuWsb9eTaGK0GJdHYeVaJWCl30rPRSUBvfXryRc~SSsND9Rx0DMciKWix0uBEAch94qBJ~-Y8RWL4O9UR1m~-tOCN-t4s4KHTc93XQx74nWmDCsOBsw6AqET2SBfeK~VMQmI~Q9~uzxHfTslPeK8iXLhnrBsZXX~13kXV-F9stsonWepo7UBThJCg6UJJifReHGW8PM5khO6WQ-y3siAww__")] bg-cover rounded-xl'
-        // style={{
-        //   backgroundImage: "url(/mainpic.png)",
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "center",
-        //   width: "100%",
-        //   height: "600px",
-        // }}
-      >
-        <div className="flex flex-col w-[48%] h-[252px] p-10 gap-6 bg-[#FFF] rounded-xl mx-[11px] my-[13px]">
-          <div className="flex flex-col gap-4">
-            <div className="flex justify-center items-center px-[10px] py-1 w-[77px] h-[20px] rounded-md bg-[#4B6BFB] technology ">
-              Technology
+    <main className="flex flex-col justify-center items-center w-full h-auto py-[32px]">
+      <div className="container flex justify-center">
+        <div className="flex flex-col justify-end max-w-[1216px] w-full  bg-cover rounded-xl p-[6px]">
+          <div
+            className="flex flex-col lg:flex-col-reverse lg:justify-start justify-end min-h-[350px] lg:min-h-[400px] xl:min-h-[500px] 2xl:min-h-[600px] w-auto rounded-xl bg-cover bg-center  bg-[#14162466] bg-blend-soft-light pl-3 pb-3"
+            style={{
+              backgroundImage: `url(${article[1]?.cover_image})`,
+            }}
+          >
+            <div className="flex flex-col  max-w-[598px] h-auto bg-white border-[1px] rounded-xl p-10">
+              <div className="flex">
+                <p className="text-[14px] font-medium text-white  rounded-md py-1 px-[10px] bg-[#4B6BFB]">
+                  Technology
+                </p>
+              </div>
+
+              <p className="text-[16px] font-semibold text-[#181A2A]">
+                {article[0]?.title}
+              </p>
+              <p className="text-[16px] font-normal text-[#97989F]">
+                {article[0]?.created_at}
+              </p>
             </div>
-            <div className="w-[518px] h-[80px]">
-              <h1 className="carousel-text">
-                <div>Grid system for better </div>
-                <div>Design User Interface</div>
-              </h1>
-            </div>
-          </div>
-          <div>
-            <h1 className="date">August 20, 2022</h1>
           </div>
         </div>
       </div>
-      <div className="flex justify-end m-2 gap-2 w-[40px]h-[40px]">
-        <button>
-          <img src="back.png" alt="" />
-        </button>
-        <button>
-          <img src="forward.png" alt="" />
-        </button>
-      </div>
-    </div>
+    </main>
   );
-}
+};
+// export default Carousel;

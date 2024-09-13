@@ -1,10 +1,11 @@
 import { SearchIcon } from "./Icons";
+import MenuSvg from "./Icons/MenuSvg";
 
-export default function Header() {
+const Header = () => {
   return (
     <div className="w-full flex justify-between items-center px-8 border-4 border-solid border-blue-500 py-8">
-      <div>
-        <img className="w-[158px] h-[36px]" src="Logo.png" alt="" />
+      <div className="container m-auto z-50 flex justify-between pt-[25px] pb-[32px] items-center fixed px-8 bg-white">
+        <img className="w-[158px] h-[36px]" src="Logo.png" alt="Logo" />
       </div>
       <div className="flex justify-center items-center gap-10">
         <button>Home</button>
@@ -15,10 +16,18 @@ export default function Header() {
         <input
           type="text"
           placeholder="Search..."
-          className="w-[114px] h-[20px]"
+          className="border-none outline-none bg-[#F4F4F5] rounded-[5px] p-2"
         />
-        <SearchIcon />
+        <button>
+          <SearchIcon />
+        </button>
+      </div>
+      <div className="flex">
+        <button>
+          <MenuSvg />
+        </button>
       </div>
     </div>
   );
-}
+};
+export default Header;

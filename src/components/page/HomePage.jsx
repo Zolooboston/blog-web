@@ -1,4 +1,4 @@
-import Carousel from "../carousel/Carousel";
+import { Carousel } from "../carousel/Carousel";
 import Header from "../header/Header";
 import Trending from "../trending/Trending";
 
